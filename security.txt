@@ -1,0 +1,46 @@
+    Add a security rule to allow inbound HTTP (port 80) connections to your instance if you have not already done so. 
+    By default, a launch-wizard-N security group was set up for your instance during initialization. 
+    This group contains a single rule to allow SSH connections.
+        Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+        Choose Instances and select your instance.
+        Under Security groups, choose view inbound rules.
+        You should see the following list of rules in your default security group:
+           Security Groups associated with i-1234567890abcdef0
+           Ports     Protocol     Source     launch-wizard-N
+           22        tcp          0.0.0.0/0          ✔
+
+        Using the procedures in Adding Rules to a Security Group, add a new inbound security rule with the following values:
+
+            Type—HTTP
+            Protocol—TCP
+            Port Range—80
+            Source—Custom
+
+      Test your web server:
+    
+    In a web browser, type the public DNS address (or the public IP address) of your instance; 
+    you should see the Apache test page. 
+    You can get the public DNS for your instance using the Amazon EC2 console 
+      (check the Public DNS column; if this column is hidden, choose Show/Hide and choose Public DNS).
+    If you are unable to see the Apache test page:
+      check that the security group you are using contains a rule to allow HTTP (port 80) traffic. 
+    For information about adding an HTTP rule to your security group, see Adding Rules to a Security Group.
+
+    Important
+
+    If you are not using Amazon Linux, you may also need to configure the firewall on your instance to allow these connections. 
+    For more information about how to configure the firewall, see the documentation for your specific distribution.
+    Apache test page
+
+    Note: This test page appears only when there is no content in /var/www/html. 
+    When you add content to the document root, your content appears at the public DNS address of your instance
+    instead of this test page. Apache httpd serves files that are kept in a directory called the Apache document root. 
+    The Amazon Linux Apache document root is /var/www/html, which by default is owned by root.
+    
+    Now we need to add "ec2-user" to the group Apache. Copy and execute this command and then log out and back in again.
+    
+      sudo usermod -a -G apache ec2-user
+    
+    Then run ./permissions.sh
+    
+    
