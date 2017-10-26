@@ -25,8 +25,15 @@ echo "Current version is:"
 echo "  https://files.phpmyadmin.net/phpMyAdmin/4.7.4/phpMyAdmin-4.7.4-all-languages.zip"
 
 cd /var/www/html
-wget https://www.phpmyadmin.net/downloads/phpMyAdmin-4.7.4-all-languages.tar.gz
-tar -xvzf phpMyAdmin-4.7.4-all-languages.tar.gz
+# This one didn't work. Had to manually use wget.
+# wget https://www.phpmyadmin.net/downloads/phpMyAdmin-4.7.4-all-languages.tar.gz
+#tar -xvzf phpMyAdmin-4.7.4-all-languages.tar.gz
+
+echo "initial method didn't work, so trying a zip file this time!"
+
+### Try this one instead next time!
+wget https://files.phpmyadmin.net/phpMyAdmin/4.7.4/phpMyAdmin-4.7.4-all-languages.zip 
+unzip phpMyAdmin-4.7.4-all-languages.zip
 mv phpMyAdmin-4.7.4-all-languages phpMyAdmin
 
 

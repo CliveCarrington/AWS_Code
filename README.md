@@ -11,6 +11,6 @@ Initial set of files to run:
   
   Run the setupMySQL.sh to configure the database
   
-  
+  To allow acess to the MySQL server remotely, need to create a security group entry for MySQL on port 3306
   
   
